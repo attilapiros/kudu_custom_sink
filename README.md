@@ -1,6 +1,6 @@
 # Custom Kudu Sink and example Spark app 
 
-Example Spark Structured Streaming app where a Kudu table is written by a custom sink using KuduContext of Kudu Spark.
+Example Spark Structured Streaming app where a Kudu table is written by a custom sink using KuduContext of Kudu Spark (see the depenendency in kudu-sink/pom.xml).
 
 *Beware*: 
 

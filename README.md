@@ -11,6 +11,19 @@ Example Spark Structured Streaming app where a Kudu table is written by a custom
 3) The sink simply upserts all the rows into the Kudu table.
 4) No error handling this is just a quick prototype.
 
+Using the custom Kudu sink in your query is quite simple (the object mapping is done by KuduContext):
+
+```
+   .writeStream
+   .format("kudu")
+   .option("kudu.master", kuduMaster)
+   .option("kudu.table", tableName)
+   .option("checkpointLocation", "/tmp/example-checkpoint")
+   .outputMode("update")
+   .start()
+```
+
+
 ## Prerequisite
 
 Kudu table must be created for example via impala-shell, like:

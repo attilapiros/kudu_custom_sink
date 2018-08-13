@@ -34,7 +34,7 @@ import org.apache.spark.sql.types.{IntegerType, StringType, StructType}
  * and then run this example.
  */
 object SparkStreamingKuduCustomSinkExample {
-	
+
   def main(args: Array[String]) {
     if (args.length < 5) {
       System.err.println("Usage: SparkStreamingKuduCustomSinkExample <masterUrl> <hostname> " +
@@ -45,10 +45,10 @@ object SparkStreamingKuduCustomSinkExample {
     val master = args(0)
     val host = args(1)
     val port = args(2).toInt
-		val kuduMaster = args(3) 
+    val kuduMaster = args(3)
     val tableName = args(4)
 
-		val spark = SparkSession
+    val spark = SparkSession
       .builder
       .appName("SparkStreamingIntoKuduExample")
       .master(master)
@@ -70,8 +70,8 @@ object SparkStreamingKuduCustomSinkExample {
     val query = words.join(staticData, Seq("value"), "left_outer")
       .writeStream
       .format("kudu")
-			.option("kudu.master", kuduMaster)
-			.option("kudu.table", tableName)
+      .option("kudu.master", kuduMaster)
+      .option("kudu.table", tableName)
       .option("checkpointLocation", "/tmp/example-checkpoint")
       .outputMode("update")
       .start()

@@ -14,10 +14,10 @@ import scala.util.Try
   */
 class KuduSink(sqlContext: SQLContext, parameters: Map[String, String]) extends Sink {
   private val logger = LoggerFactory.getLogger(classOf[KuduSink])
-		
-	private val kuduContext = new KuduContext(parameters("kudu.master"), sqlContext.sparkContext)
 
-  private val tablename = parameters("kudu.table") 
+  private val kuduContext = new KuduContext(parameters("kudu.master"), sqlContext.sparkContext)
+
+  private val tablename = parameters("kudu.table")
 
   override def addBatch(batchId: Long, data: DataFrame): Unit = {
     kuduContext.upsertRows(data, tablename)

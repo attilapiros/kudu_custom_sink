@@ -6,10 +6,10 @@ Example Spark Structured Streaming app where a Kudu table is written by a custom
 
 1) The current KuduContext cannot be used with streaming DataFrame but I am about to create a Kudu patch regarding the fix.
    This app is used for testing that patch.
-2) In case of a custom sink checkpoint location must be specified, but socket source does not support offsets. 
-   So I have deleted the /tmp/example-checkpoint directory before each run.
+2) In case of a custom sink checkpoint location must be specified, but socket source does not support offsets, 
+   so before each test the /tmp/example-checkpoint directory must be deleted.
 3) The sink simply upserts all the rows into the Kudu table.
-4) No error handling this is just a quick prototype.
+4) There is no proper error handling, this is just a quick prototype.
 
 Using the custom Kudu sink in your query is quite simple (the object mapping is done by KuduContext):
 
